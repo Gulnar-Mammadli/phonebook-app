@@ -51,10 +51,8 @@ public class UserServicesImpl implements UserServices {
     public ResponseData<String> delete(String userId){
         Users user = userRepo.findByUserIdAndDeletedIsFalse(userId);
         if(user!=null){
-//            return new ResponseEntity<>(HttpStatus.OK);
         user.setDeleted(true);
         userRepo.save(user);
-//        return  new ResponseEntity<>(user,HttpStatus.NOT_FOUND);
         return ResponseData.<String>builder()
                 .code(200)
                 .message("success")
@@ -90,17 +88,18 @@ public class UserServicesImpl implements UserServices {
     @Override
     public ResponseData<List<Users>> getAll() {
         List<Users>  listOfUsers= userRepo.findAllByDeletedIsFalse();
-        if(listOfUsers!=null){
-            ResponseData.<List<Users>>builder()
-                    .code(200)
-                    .message("success")
-                    .body(listOfUsers)
+        if(listOfUsers.isEmpty()){
+            return ResponseData.<List<Users>>builder()
+                    .code(404)
+                    .message("not_found")
+                    .body(null)
                     .build();
+
         }
-        return ResponseData.<List<Users>>builder()
-                .code(404)
-                .message("not_found")
-                .body(null)
+       return ResponseData.<List<Users>>builder()
+                .code(200)
+                .message("success")
+                .body(listOfUsers)
                 .build();
     }
 }
