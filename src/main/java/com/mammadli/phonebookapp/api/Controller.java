@@ -11,21 +11,21 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/v1/phonebook")
+@RequestMapping("/api/v1/user")
 public class Controller {
     private final UserServices userServices;
 
-    @PostMapping("/create-user")
+    @PostMapping("/add")
     public ResponseEntity<ResponseData<Users>> create(@RequestBody Users user){
        return ResponseEntity.ok(userServices.create(user));
     }
 
-    @PutMapping("/update-user")
+    @PutMapping("/edit")
     public ResponseEntity<ResponseData<Users>> update(@RequestBody Users user){
         return ResponseEntity.ok(userServices.update(user));
     }
 
-    @DeleteMapping("/delete-user/{userId}")
+    @DeleteMapping("/delete/{userId}")
     public ResponseEntity<ResponseData<String>> delete(@PathVariable String userId){
         return  ResponseEntity.ok(userServices.delete(userId));
     }
