@@ -1,0 +1,12 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: phonebookapp
+
+  profiles:
+    include:
+      - db
+      - management
+
