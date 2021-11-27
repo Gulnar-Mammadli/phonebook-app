@@ -11,4 +11,6 @@ public interface UserRepo extends CrudRepository<Users,String> {
     List<Users> findAllBy();
     Users findByUserIdAndDeletedIsFalse(String userId);
     List<Users> findAllByDeletedIsFalse();
+
+
 }

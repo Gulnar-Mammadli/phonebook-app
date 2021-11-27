@@ -30,9 +30,9 @@ public class Controller {
         return  ResponseEntity.ok(userServices.delete(userId));
     }
 //TODO
-    @GetMapping("/list/{userId}")
-    public ResponseEntity<ResponseData<List<Users>>> getAllUsers(@PathVariable String userId){
-        return ResponseEntity.ok(userServices.getByUserId());
+    @GetMapping("/list")
+    public ResponseEntity<ResponseData<List<Users>>> getAllUsers(){
+        return ResponseEntity.ok(userServices.getAll());
     }
 
 

@@ -88,8 +88,8 @@ public class UserServicesImpl implements UserServices {
 //    }
 
     @Override
-    public ResponseData<List<Users>> getByUserId() {
-        List<Users> listOfUsers = userRepo.findAllByDeletedIsFalse();
+    public ResponseData<List<Users>> getAll() {
+        List<Users>  listOfUsers= userRepo.findAllByDeletedIsFalse();
         if(listOfUsers!=null){
             ResponseData.<List<Users>>builder()
                     .code(200)

@@ -11,5 +11,5 @@ public interface UserServices {
     ResponseData<Users> create(Users user);
     ResponseData<Users> update(Users user);
     ResponseData<String> delete(String userId);
-    ResponseData<List<Users>> getByUserId();
+    ResponseData<List<Users>> getAll();
 }
