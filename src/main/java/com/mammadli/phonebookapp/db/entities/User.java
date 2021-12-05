@@ -17,7 +17,7 @@ import javax.persistence.Id;
 @Builder
 @Data
 @Entity
-public class Users {
+public class User {
 
     @Id
     @GeneratedValue(generator = "uuid2")
@@ -25,13 +25,13 @@ public class Users {
             name = "uuid2",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
-    @Column( nullable = false,columnDefinition = "VARCHAR(255)")
-
+    @Column(nullable = false,columnDefinition = "VARCHAR(255)")
+   
     private String userId;
 
     private String name;
 
-    private String phoneNumber;
+    private String phone;
 
     private boolean deleted= false;
 

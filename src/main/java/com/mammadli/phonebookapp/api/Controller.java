@@ -1,38 +1,37 @@
 package com.mammadli.phonebookapp.api;
 
-import com.mammadli.phonebookapp.db.entities.Users;
-import com.mammadli.phonebookapp.model.ResponseData;
+import com.mammadli.phonebookapp.db.entities.User;
 import com.mammadli.phonebookapp.service.UserServices;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/v1/user")
+@RequestMapping("/user/api")
 public class Controller {
     private final UserServices userServices;
 
-    @PostMapping("/add")
-    public ResponseEntity<ResponseData<Users>> create(@RequestBody Users user){
-       return ResponseEntity.ok(userServices.create(user));
+    @PostMapping
+    public User create(@RequestBody User user){
+       return userServices.create(user);
     }
 
-    @PutMapping("/edit")
-    public ResponseEntity<ResponseData<Users>> update(@RequestBody Users user){
-        return ResponseEntity.ok(userServices.update(user));
+    @PutMapping
+    public User update(@RequestBody User user){
+        return userServices.update(user);
     }
 
-    @DeleteMapping("/delete/{userId}")
-    public ResponseEntity<ResponseData<String>> delete(@PathVariable String userId){
-        return  ResponseEntity.ok(userServices.delete(userId));
+    @DeleteMapping("/{userId}")
+    public void delete(@PathVariable String userId){
+         userServices.delete(userId);
     }
-//TODO
-    @GetMapping("/list")
-    public ResponseEntity<ResponseData<List<Users>>> getAllUsers(){
-        return ResponseEntity.ok(userServices.getAll());
+
+    @GetMapping
+    public List<User> getAllUsers(){
+        return userServices.getAll();
     }
 
 
