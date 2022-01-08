@@ -27,8 +27,8 @@ class PhonebookAppApplicationTests {
 
     private static final String  ID = "1";
     private static final int SIZE = 1;
-    private static final String NAME = "John Doe";
-    private static final String PHONE = "4105551213";
+    private static final String NAME = "Gulnar Mammadli";
+    private static final String PHONE = "0505354746";
 
     @MockBean
     private UserRepo userRepository;
