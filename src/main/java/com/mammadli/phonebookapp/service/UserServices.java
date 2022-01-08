@@ -1,7 +1,6 @@
 package com.mammadli.phonebookapp.service;
 
 import com.mammadli.phonebookapp.db.entities.User;
-import com.mammadli.phonebookapp.model.ResponseData;
 
 import java.util.List;
 

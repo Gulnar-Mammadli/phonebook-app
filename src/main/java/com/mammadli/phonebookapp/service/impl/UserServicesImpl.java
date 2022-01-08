@@ -6,6 +6,7 @@ import com.mammadli.phonebookapp.service.UserServices;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -37,6 +38,7 @@ public class UserServicesImpl implements UserServices {
         user.setDeleted(true);
             User save = userRepo.save(user);
         }
+
     }
 
 
@@ -44,7 +46,7 @@ public class UserServicesImpl implements UserServices {
     public List<User> getAll() {
         List<User>  listOfUsers= userRepo.findAllByDeletedIsFalse();
         if(listOfUsers.isEmpty()){
-            return null;
+            return Collections.emptyList();
 
         }
        return listOfUsers;
