@@ -24,7 +24,7 @@
             src/main/java/com/mammadli/phonebookapp/api/*,
             src/main/java/com/mammadli/phonebookapp/db/**,
             src/main/java/com/mammadli/phonebookapp/monitoring/*,
-            src/main/java/com/mammadli/phonebookapp/PhonebookApplication.java
+            src/main/java/com/mammadli/phonebookapp/PhonebookAppApplication.java
         </sonar.coverage.exclusions>
     </properties>
     <profiles>

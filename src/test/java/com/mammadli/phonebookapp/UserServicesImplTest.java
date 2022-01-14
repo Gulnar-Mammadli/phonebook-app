@@ -23,7 +23,7 @@ import static org.mockito.Mockito.*;
 
 @ContextConfiguration(classes = {UserServicesImpl.class})
 @ExtendWith(SpringExtension.class)
-class PhonebookAppApplicationTests {
+class UserServicesImplTest {
 
     private static final String  ID = "1";
     private static final int SIZE = 1;
