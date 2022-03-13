@@ -52,11 +52,11 @@ class UserServicesImplTest {
         List<User> actualUsers = userServiceImpl.getAll();
 
         // assert
-        assertEquals(SIZE, actualUsers.size());
+        assertThat(actualUsers.size()).isSameAs(SIZE);
         User getResult = actualUsers.get(0);
-        assertEquals(NAME, getResult.getName());
-        assertEquals(ID, getResult.getUserId());
-        assertEquals(PHONE, getResult.getPhone());
+        assertThat(getResult.getName()).isSameAs(NAME);
+        assertThat(getResult.getUserId()).isSameAs(ID);
+        assertThat(getResult.getPhone()).isSameAs(PHONE);
         verify(userRepository).findAllByDeletedIsFalse();
 
     }
@@ -83,7 +83,9 @@ class UserServicesImplTest {
         User actualAddUserResult = userServiceImpl.create(user);
 
         // assert
-        assertEquals(ID, actualAddUserResult.getUserId());
+            assertThat(actualAddUserResult.getName()).isSameAs(NAME);
+        assertThat(actualAddUserResult.getUserId()).isSameAs(ID);
+        assertThat(actualAddUserResult.getPhone()).isSameAs(PHONE);
         verify(userRepository).save(any());
     }
 
@@ -98,7 +100,7 @@ class UserServicesImplTest {
         User actualUpdateUserResult = userServiceImpl.update(user);
 
         // assert
-        assertEquals(ID, actualUpdateUserResult.getUserId());
+        assertThat(actualUpdateUserResult.getUserId()).isSameAs(ID);
         verify(userRepository).findByUserIdAndDeletedIsFalse(any());
         verify(userRepository).save(any());
 
@@ -128,7 +130,7 @@ class UserServicesImplTest {
 
         // assert
         verify(userRepository).findByUserIdAndDeletedIsFalse(any());
-        assertTrue(userRepository.findAllByDeletedIsFalse().isEmpty());
+        assertThat(userRepository.findAllByDeletedIsFalse()).isEmpty();
     }
 
     @Test
@@ -153,14 +155,26 @@ class UserServicesImplTest {
 
     @Test
     void testGet() {
-        User user = new User();
-        user.setDeleted(true);
-        user.setName("Name");
-        user.setPhone("4105551212");
-        user.setUserId("42");
-        when(this.userRepository.findByUserIdAndDeletedIsFalse((String) any())).thenReturn(user);
-        assertSame(user, this.userServiceImpl.get("42"));
-        verify(this.userRepository).findByUserIdAndDeletedIsFalse((String) any());
+        when(userRepository.findByUserIdAndDeletedIsFalse(any())).thenReturn(user);
+        User userResponse = userServiceImpl.get(ID);
+        assertThat(userResponse.getName()).isSameAs(NAME);
+        assertThat(userResponse.getUserId()).isSameAs(ID);
+        assertThat(userResponse.getPhone()).isSameAs(PHONE);
+        verify(userRepository).findByUserIdAndDeletedIsFalse(ID);
+    }
+
+
+    @Test
+    void getUserThenNullResult() {
+        // arrange
+        when(userRepository.findByUserIdAndDeletedIsFalse(any())).thenReturn(null);
+
+        // act
+        User userResponse = userServiceImpl.get(ID);
+
+        // assert
+        assertThat(userResponse).isSameAs(null);
+        verify(userRepository).findByUserIdAndDeletedIsFalse(ID);
     }
 
 }
