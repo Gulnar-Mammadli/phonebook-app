@@ -151,5 +151,16 @@ class UserServicesImplTest {
                 .build();
     }
 
+    @Test
+    void testGet() {
+        User user = new User();
+        user.setDeleted(true);
+        user.setName("Name");
+        user.setPhone("4105551212");
+        user.setUserId("42");
+        when(this.userRepository.findByUserIdAndDeletedIsFalse((String) any())).thenReturn(user);
+        assertSame(user, this.userServiceImpl.get("42"));
+        verify(this.userRepository).findByUserIdAndDeletedIsFalse((String) any());
+    }
 
 }
