@@ -34,5 +34,8 @@ public class Controller {
         return userServices.getAll();
     }
 
-
+   @GetMapping("/{userId}")
+    public User get(@PathVariable String userId){
+        return userServices.get(userId);
+   }
 }

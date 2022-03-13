@@ -51,4 +51,11 @@ public class UserServicesImpl implements UserServices {
         }
        return listOfUsers;
     }
+
+    @Override
+    public User get(String userId) {
+        User user = userRepo.findByUserIdAndDeletedIsFalse(userId);
+        return user;
+    }
+
 }

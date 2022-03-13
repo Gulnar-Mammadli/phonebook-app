@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_SCHEMA:phonebookdb}?createDatabaseIfNotExist=true
-    username: ${DB_USER:root}
-    password: ${DB_PASSWORD:123456}
+    url: ${DB_URL:jdbc:postgresql://ec2-52-44-209-165.compute-1.amazonaws.com:5432/deofv7um83j18a}
+    username: ${DB_USER:jmtjfnkikjjuhj}
+    password: ${DB_PASSWORD:43b379745825b01f8b2ad8b63abe4de25240320b08974ccc0006bcf0c0c2f6e2}
     tomcat:
       test-while-idle: true
       validation-query: 1
@@ -10,3 +10,4 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+
