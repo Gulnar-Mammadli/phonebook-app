@@ -1,15 +1,16 @@
-package api;
+package com.mammadli.phonebookapp.api;
 
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
-import com.mammadli.phonebookapp.api.Controller;
 import com.mammadli.phonebookapp.db.entities.User;
 import com.mammadli.phonebookapp.service.UserServices;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
@@ -24,10 +25,10 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 @ContextConfiguration(classes = {Controller.class})
 @ExtendWith(SpringExtension.class)
 class ControllerTest {
-    @Autowired
+    @InjectMocks
     private Controller controller;
 
-    @MockBean
+    @Mock
     private UserServices userServices;
 
     @Test

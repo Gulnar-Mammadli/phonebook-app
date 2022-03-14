@@ -1,4 +1,4 @@
-package com.mammadli.phonebookapp;
+package com.mammadli.phonebookapp.service.impl;
 
 import com.mammadli.phonebookapp.db.entities.User;
 import com.mammadli.phonebookapp.db.repo.UserRepo;
