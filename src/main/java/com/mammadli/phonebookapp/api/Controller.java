@@ -10,16 +10,16 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/user/api")
+@RequestMapping("/user")
 public class Controller {
     private final UserServices userServices;
 
-    @PostMapping
+    @PostMapping("/user")
     public User create(@RequestBody User user){
        return userServices.create(user);
     }
 
-    @PutMapping
+    @PutMapping("/user")
     public User update(@RequestBody User user){
         return userServices.update(user);
     }
@@ -29,7 +29,7 @@ public class Controller {
          userServices.delete(userId);
     }
 
-    @GetMapping
+    @GetMapping("/user")
     public List<User> getAllUsers(){
         return userServices.getAll();
     }
