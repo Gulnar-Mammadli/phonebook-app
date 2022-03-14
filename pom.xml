@@ -32,10 +32,10 @@
                     http://localhost:9000/
                 </sonar.host.url>
                 <sonar.login>
-                    90fa36080fe39b27fd00a71c09a9aad2bb9ff26c
+                    8c588ec4690270be03c0b56e80ade777786ddb85
                 </sonar.login>
                 <sonar.projectKey>
-                    PhonebookProject
+                    PhoneBookApplicaion
                 </sonar.projectKey>
             </properties>
         </profile>
