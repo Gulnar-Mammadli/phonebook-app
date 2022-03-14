@@ -32,30 +32,6 @@ class ControllerTest {
     private UserServices userServices;
 
     @Test
-    void testGet() throws Exception {
-        User user = new User();
-        user.setDeleted(true);
-        user.setName("Name");
-        user.setPhone("4105551212");
-        user.setUserId("42");
-        when(this.userServices.get((String) any())).thenReturn(user);
-        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get("/user/*");
-        MockMvcBuilders.standaloneSetup(this.controller)
-                .build()
-                .perform(requestBuilder)
-                .andExpect(MockMvcResultMatchers.status().isOk());
-    }
-
-    @Test
-    void testGet2() throws Exception {
-        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get("/user");
-        ResultActions actualPerformResult = MockMvcBuilders.standaloneSetup(this.controller)
-                .build()
-                .perform(requestBuilder);
-        actualPerformResult.andExpect(MockMvcResultMatchers.status().is(500));
-    }
-
-    @Test
     void testCreate() throws Exception {
         User user = new User();
         user.setDeleted(true);
@@ -90,6 +66,30 @@ class ControllerTest {
         MockMvcBuilders.standaloneSetup(this.controller)
                 .build()
                 .perform(deleteResult)
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    void testGetAllUsers() throws Exception {
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get("/user");
+        ResultActions actualPerformResult = MockMvcBuilders.standaloneSetup(this.controller)
+                .build()
+                .perform(requestBuilder);
+        actualPerformResult.andExpect(MockMvcResultMatchers.status().is(500));
+    }
+
+    @Test
+    void testGet() throws Exception {
+        User user = new User();
+        user.setDeleted(true);
+        user.setName("Name");
+        user.setPhone("4105551212");
+        user.setUserId("42");
+        when(this.userServices.get((String) any())).thenReturn(user);
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get("/user/*");
+        MockMvcBuilders.standaloneSetup(this.controller)
+                .build()
+                .perform(requestBuilder)
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
